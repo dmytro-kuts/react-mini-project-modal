@@ -1,18 +1,66 @@
-import "./index.scss";
-import React from "react";
-import Modal from "./components/Modal";
+import React, { useState } from "react";
+import { ListItem } from "./components/ListItem";
+import { TaskField } from "./components/TaskField";
 
 function App() {
-    const [open, setOpen] = React.useState(false);
+    const [tasks, setTasks] = useState([
+        {
+            text: "Вивчити ReactJS",
+            completed: true,
+        },
+        {
+            text: "Розробити ToDo на ReactJS",
+            completed: false,
+        },
+    ]);
+
+    const onToggleCompleted = (index) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task, curIdx) =>
+                index === curIdx
+                    ? {
+                          ...task,
+                          completed: !task.completed,
+                      }
+                    : task
+            )
+        );
+    };
+
+    const onRemoveTask = (index) => {
+        setTasks((prevTasks) =>
+            prevTasks.filter((_, curIdx) => index !== curIdx)
+        );
+    };
+
+    const onAddTask = (text) => {
+        setTasks((prevTasks) => [
+            ...prevTasks,
+            {
+                text,
+                completed: false,
+            },
+        ]);
+    };
 
     return (
-        <div className="App">
-            <button onClick={() => setOpen(true)} className="open-modal-btn">
-                ✨ Відкрити вікно
-            </button>
-            <Modal open={open} setOpen={setOpen}>
-                <img src="https://media.tenor.com/3X9_AycN5R8AAAAC/angry-birds.gif" />
-            </Modal>
+        <div className="todo">
+            <div className="todo__header">
+                <h4>Список задач</h4>
+            </div>
+            <TaskField onAddTask={onAddTask} />
+            <div className="todo__list">
+                {tasks.map((task, index) => (
+                    <ListItem
+                        key={index}
+                        index={index}
+                        text={task.text}
+                        completed={task.completed}
+                        onToggleCompleted={onToggleCompleted}
+                        onRemoveTask={onRemoveTask}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
