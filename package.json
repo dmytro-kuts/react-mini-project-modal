@@ -2,7 +2,7 @@
   "name": "react-mini-projects",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Dmytro24/react-mini-project-to_do_list/",
+  "homepage": "https://dmytro24.github.io/react-mini-project-modal/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

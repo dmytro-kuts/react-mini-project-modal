@@ -1,68 +1,20 @@
-import React, { useState } from "react";
-import { ListItem } from "./components/ListItem";
-import { TaskField } from "./components/TaskField";
+import './index.scss';
+import React from 'react';
+import Modal from './components/Modal';
 
 function App() {
-    const [tasks, setTasks] = useState([
-        {
-            text: "Вивчити ReactJS",
-            completed: true,
-        },
-        {
-            text: "Розробити ToDo на ReactJS",
-            completed: false,
-        },
-    ]);
+   const [open, setOpen] = React.useState(false);
 
-    const onToggleCompleted = (index) => {
-        setTasks((prevTasks) =>
-            prevTasks.map((task, curIdx) =>
-                index === curIdx
-                    ? {
-                          ...task,
-                          completed: !task.completed,
-                      }
-                    : task
-            )
-        );
-    };
-
-    const onRemoveTask = (index) => {
-        setTasks((prevTasks) =>
-            prevTasks.filter((_, curIdx) => index !== curIdx)
-        );
-    };
-
-    const onAddTask = (text) => {
-        setTasks((prevTasks) => [
-            ...prevTasks,
-            {
-                text,
-                completed: false,
-            },
-        ]);
-    };
-
-    return (
-        <div className="todo">
-            <div className="todo__header">
-                <h4>Список задач</h4>
-            </div>
-            <TaskField onAddTask={onAddTask} />
-            <div className="todo__list">
-                {tasks.map((task, index) => (
-                    <ListItem
-                        key={index}
-                        index={index}
-                        text={task.text}
-                        completed={task.completed}
-                        onToggleCompleted={onToggleCompleted}
-                        onRemoveTask={onRemoveTask}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+   return (
+      <div className="App">
+         <button onClick={() => setOpen(true)} className="open-modal-btn">
+            ✨ Відкрити вікно
+         </button>
+         <Modal open={open} setOpen={setOpen}>
+            <img src="https://media.tenor.com/3X9_AycN5R8AAAAC/angry-birds.gif" alt='Angry birds'/>
+         </Modal>
+      </div>
+   );
 }
 
 export default App;
