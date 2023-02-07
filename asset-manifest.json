@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-mini-project-modal/static/css/main.f6e52c56.css",
-    "main.js": "/react-mini-project-modal/static/js/main.8bc85e6a.js",
+    "main.js": "/react-mini-project-modal/static/js/main.ccf60526.js",
     "index.html": "/react-mini-project-modal/index.html",
     "main.f6e52c56.css.map": "/react-mini-project-modal/static/css/main.f6e52c56.css.map",
-    "main.8bc85e6a.js.map": "/react-mini-project-modal/static/js/main.8bc85e6a.js.map"
+    "main.ccf60526.js.map": "/react-mini-project-modal/static/js/main.ccf60526.js.map"
   },
   "entrypoints": [
     "static/css/main.f6e52c56.css",
-    "static/js/main.8bc85e6a.js"
+    "static/js/main.ccf60526.js"
   ]
 }
